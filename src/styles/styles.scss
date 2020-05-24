@@ -1,7 +1,10 @@
 @import './settings/variables';
 @import './settings/base';
 
-@import './components/app';
+@import './components/loading';
 @import './components/header';
+@import './components/app';
 @import './components/container';
+@import './components/form';
+@import './components/preview';
 @import './components/credits';

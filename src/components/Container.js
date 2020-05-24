@@ -2,62 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { MdPets, MdKeyboardArrowDown } from 'react-icons/md'
 import Loader from 'react-loader-spinner'
 
+import Preview from '../components/Preview';
+
+import { useDogInfo } from '../hooks/dogInfo';
+
 import api from '../services/api';
 
 function Container() {
   const [loadingContent, setLoadingContent] = useState(true);
-
-  const [dogName, setDogName] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:dogName');
-
-    if(storaged) {
-      return storaged;
-    }
-
-    return 'Default';
-  });
-
-  const [dogBreed, setDogBreed] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:dogBreed');
-
-    if(storaged) {
-      return storaged;
-    }
-
-    return 'vira-lata';
-  });
-
-  const [dogImage, setDogImage] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:dogImage');
-
-    if(storaged) {
-      return storaged;
-    }
-  });
-
-  const [textColor, setTextColor] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:textColor');
-
-    if(storaged) {
-      return storaged;
-    }
-
-    return '#fff';
-  });
-
-  const [font, setFont] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:font');
-
-    if(storaged) {
-      return storaged;
-    }
-
-    return 'Roboto Slab';
-  });
-
   const [breeds, setBreeds] = useState([]);
-  const [loadingImage, setLoadingImage] = useState(true);
-
+  const { dogName, dogBreed, dogImage, setDogName, textColor, font, setDogBreed, setTextColor, setFont } = useDogInfo();
 
   const colors = [
     '#ff595e',
@@ -98,25 +52,6 @@ function Container() {
     loadBreeds();
   }, [loadingContent]);
 
-  useEffect(() => {
-    async function loadDogImage() {
-      setLoadingImage(true);
-      const splittedBreed = dogBreed.split(' ');
-
-      const url = `/breed/${dogBreed}/images/random`;
-      const houndUrl = `/breed/${splittedBreed[1]}/${splittedBreed[0]}/images/random`;
-
-      const { data } = await api.get(dogBreed.split(' ').length > 1 ? houndUrl : url);
-
-      const { message } = data;
-
-      setDogImage(message);
-      setLoadingImage(false);
-    }
-
-    loadDogImage();
-  }, [dogBreed]);
-
   function handleDogName(e) {
     let name = e.target.value;
 
@@ -153,18 +88,17 @@ function Container() {
   return (
     <>
     {loadingContent ?
-    <div className="loading_container">
+    <div className="loading">
       <Loader type="Oval" color="#fff" height={50} width={50}/>
     </div> :
 
     <section className="container">
       <div className="container__form">
-
         <form onSubmit={saveData}>
           <div className="input__container">
-            <select name="breeds" id="breeds" onChange={handleBreed}>
+            <select name="breeds" id="breeds" onChange={handleBreed} defaultValue={dogBreed}>
               {breeds.map((breed) => (
-                <option value={breed} key={breed} selected={breed === dogBreed}>{breed}</option>
+                <option value={breed} key={breed}>{breed}</option>
                 ))}
             </select>
             <MdKeyboardArrowDown size={26} color={'#4EAB6F'} />
@@ -176,16 +110,16 @@ function Container() {
           </div>
 
           <div className="buttons__container">
-            {colors.map(color => (
-              <button type="button" onClick={() => handleTextColor(color)} style={{backgroundColor: color}}>
+            {colors.map((color, index) => (
+              <button type="button" key={index} onClick={() => handleTextColor(color)} style={{backgroundColor: color}}>
                 {color}
               </button>
             ))}
           </div>
 
           <div className="fonts__container">
-            {fonts.map(font => (
-              <button type="button" onClick={() => handleFont(font)} style={{fontFamily: font}}>{font}</button>
+            {fonts.map((font, index) => (
+              <button type="button" key={index} onClick={() => handleFont(font)} style={{fontFamily: font}}>{font}</button>
             ))}
           </div>
 
@@ -196,16 +130,7 @@ function Container() {
       </div>
 
       <div className="container__info">
-        <div className="container__info--image">
-          {loadingImage ? <Loader type="ThreeDots" color={textColor} height={50} width={50}/> :
-          <img src={dogImage} alt="DogImage"/>}
-
-          <div className="dog_info" style={{color: textColor, fontFamily: font}}>
-            <strong>{dogName}</strong>
-            <span>{dogBreed}</span>
-          </div>
-        </div>
-
+        <Preview />
       </div>
     </section>
 }

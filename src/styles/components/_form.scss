@@ -1,0 +1,89 @@
+.input__container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: .8em 1em;
+
+  & + .input__container {
+    margin-top: 20px;
+  }
+
+  input {
+    margin-left: 10px;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  input, select {
+    flex: 1;
+    font-size: 1em;
+  }
+}
+
+
+.buttons__container {
+  margin-top: 20px;
+  display: flex;
+
+  button {
+    flex: 1;
+    height: 40px;
+    transition: 0.3s ease;
+    color: rgba($color: $inputTextColor, $alpha: 0.1);
+    font-size: .9em;
+
+    &:hover {
+      flex-basis: 40px;
+      color: rgba($color: $inputTextColor, $alpha: 1);
+    }
+
+    &:nth-child(1) {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}
+
+.fonts__container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  button {
+    color: $primaryTextColor;
+    padding: 20px;
+    font-size: 1.5em;
+    background-color: transparent;
+    transition: 0.3s ease;
+    text-align: center;
+
+    &:hover {
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.submit__container {
+  display: flex;
+  margin: 20px 0;
+  justify-content: center;
+
+  button {
+    background-color: $secondaryColor;
+    color: white;
+    font-size: 1.1em;
+    padding: 10px 45px;
+    border-radius: 5px;
+  }
+}

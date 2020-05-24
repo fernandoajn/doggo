@@ -1,0 +1,12 @@
+
+.dog_info {
+  background-color: rgba($color: $secondaryColor, $alpha: 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+
+  width: 500px;
+  position: absolute;
+  bottom: 0;
+}
