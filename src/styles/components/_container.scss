@@ -1,0 +1,149 @@
+.container {
+  width: 100%;
+  flex: 4;
+  display: flex;
+  justify-content: center;
+}
+
+.container__form {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+
+  form {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.input__container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: .8em 1em;
+
+  & + .input__container {
+    margin-top: 20px;
+  }
+
+  input {
+    margin-left: 10px;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  input, select {
+    flex: 1;
+    font-size: 1em;
+  }
+}
+
+.container__info {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  text-shadow: 1px 1px black;
+  align-items: center;
+
+  strong {
+    font-weight: 600;
+    font-size: 1.7em;
+  }
+}
+
+.container__info--image {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.dog_info {
+  background-color: rgba($color: #444, $alpha: 0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+
+  width: 500px;
+  position: absolute;
+  bottom: 0;
+}
+
+.buttons__container {
+  margin-top: 20px;
+  display: flex;
+
+  button {
+    flex: 1;
+    height: 40px;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    &:nth-child(1) {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+  }
+}
+
+.fonts__container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  button {
+    color: $primaryTextColor;
+    padding: 20px;
+    font-size: 1.5em;
+    background-color: transparent;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: skewX(-10deg);
+    }
+  }
+}
+
+.submit__container {
+  display: flex;
+  margin: 20px 0;
+  justify-content: center;
+
+  button {
+    background-color: $secondaryColor;
+    color: white;
+    font-size: 1.1em;
+    padding: 10px 45px;
+    border-radius: 5px;
+  }
+}
+
+.loading_container {
+  display: flex;
+  align-items: center;
+  flex: 4;
+}
