@@ -3,7 +3,7 @@ import React from 'react';
 function Credits() {
   return (
     <footer>
-        <span>Made with 💚 by @fernandoajn</span>
+        <span>Made with <span role="img" aria-label="green-heart">💚</span> by @fernandoajn</span>
     </footer>
   );
 }

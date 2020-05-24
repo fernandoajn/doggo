@@ -1,7 +1,8 @@
 // Colors
-$primaryColor: #4EAB6F;
-$secondaryColor: rgb(41, 73, 52);
-$primaryTextColor: #fff;
+$primaryColor: #81b29a;
+$secondaryColor: darken($primaryColor, 20%);
+$primaryTextColor: #ffffff;
+$inputTextColor: #061826;
 
 // Fonts
 $primaryFont: 'Roboto Slab';

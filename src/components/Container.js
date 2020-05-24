@@ -60,11 +60,11 @@ function Container() {
 
 
   const colors = [
-    '#ffffff',
-    '#43d8c9',
-    '#eb6383',
-    '#ffd31d',
-    '#f57b51'
+    '#ff595e',
+    '#ffca3a',
+    '#edf2f4',
+    '#1982c4',
+    '#6a4c93'
   ];
 
   const fonts = [
@@ -145,6 +145,7 @@ function Container() {
     localStorage.setItem("@doggo:dogImage", dogImage);
     localStorage.setItem("@doggo:textColor", textColor);
     localStorage.setItem("@doggo:font", font);
+    localStorage.setItem("@doggo:dateTime", JSON.stringify(new Date()));
 
     alert("Dados salvos com sucesso!");
   }
@@ -176,7 +177,9 @@ function Container() {
 
           <div className="buttons__container">
             {colors.map(color => (
-              <button type="button" onClick={() => handleTextColor(color)} style={{backgroundColor: color}}></button>
+              <button type="button" onClick={() => handleTextColor(color)} style={{backgroundColor: color}}>
+                {color}
+              </button>
             ))}
           </div>
 

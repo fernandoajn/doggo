@@ -15,12 +15,9 @@ button, input, select {
   font-family: $primaryFont;
   border: 0;
   outline: 0;
+  color: $inputTextColor;
 }
 
-button {
+button, select {
   cursor: pointer;
-}
-
-select {
-  cursor: context-menu;
 }
