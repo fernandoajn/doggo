@@ -6,7 +6,6 @@ const DogInfoProvider = ({ children }) => {
   const [dogName, setDogName] = useState(() => localStorage.getItem('@doggo:dogName'));
   const [dogBreed, setDogBreed] = useState(() => localStorage.getItem('@doggo:dogBreed') || '');
   const [dogImage, setDogImage] = useState(() => localStorage.getItem('@doggo:dogImage'));
-
   const [textColor, setTextColor] = useState(() => localStorage.getItem('@doggo:textColor') || '#edf2f4');
   const [font, setFont] = useState(() => localStorage.getItem('@doggo:font'));
 

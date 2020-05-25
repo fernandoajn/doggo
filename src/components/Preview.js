@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Loader from 'react-loader-spinner';
 
 import { useDogInfo } from '../hooks/dogInfo';
@@ -7,8 +7,8 @@ import api from '../services/api';
 
 function Preview() {
   const [loadingImage, setLoadingImage] = useState();
-
   const { dogName, dogBreed, dogImage, textColor, font, setDogImage } = useDogInfo();
+  const didUpdateRef = useRef(false);
 
   useEffect(() => {
     async function loadDogImage() {
@@ -27,7 +27,11 @@ function Preview() {
       setLoadingImage(false);
     }
 
-    loadDogImage();
+    if (didUpdateRef.current) {
+      loadDogImage();
+    } else {
+      didUpdateRef.current = true;
+    }
   }, [dogBreed, setDogImage]);
 
   return (
