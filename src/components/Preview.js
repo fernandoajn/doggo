@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Loader from 'react-loader-spinner';
 
 import { useDogInfo } from '../hooks/dogInfo';
+import defaultImage from '../assets/whitelogo.png';
 
 import api from '../services/api';
 
@@ -35,10 +36,16 @@ function Preview() {
   }, [dogBreed, setDogImage]);
 
   return (
-    <div className="container__info--image">
+    <div className="container__info--image" >
       {loadingImage ?
       <Loader type="ThreeDots" color={textColor} height={50} width={50}/> :
-      <img src={dogImage} alt="DogImage"/>}
+      <>
+        {dogImage ?
+          <img src={dogImage} alt="DogImage" className="dog-image"/> :
+          <img src={defaultImage} alt="doggo." className="default-image"/>
+        }
+      </>
+      }
 
       <div className="dog_info" style={{color: textColor, fontFamily: font}}>
         <strong>{dogName}</strong>

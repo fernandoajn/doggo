@@ -9,6 +9,10 @@
   width: 100%;
   position: absolute;
   bottom: 0;
+
+  span {
+    font-size: 1.1em;
+  }
 }
 
 .container__info--image {
@@ -22,8 +26,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  img {
-    width: 100%;
-  }
+.dog-image {
+  width: 100%;
+}
+
+.default-image {
+  width: 150px;
+  opacity: 0.1;
 }
