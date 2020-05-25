@@ -95,8 +95,8 @@ function Container() {
     <section className="container">
       <div className="container__form">
         <form onSubmit={saveData}>
-          <div className="input__container">
-            <select name="breeds" id="breeds" onChange={handleBreed} defaultValue={dogBreed}>
+          <div className="form__input">
+            <select name="breeds" id="breeds" onChange={handleBreed} defaultValue={dogBreed} required>
               <option value="" >Escolha uma raça</option>
               {breeds.map((breed) => (
                 <option value={breed} key={breed}>{breed}</option>
@@ -105,12 +105,12 @@ function Container() {
             <MdKeyboardArrowDown size={30} />
           </div>
 
-          <div className="input__container">
+          <div className="form__input">
             <MdPets size={22}/>
-            <input type="text" placeholder="Digite um nome" onChange={handleDogName} value={dogName}/>
+            <input type="text" placeholder="Digite um nome" onChange={handleDogName} value={dogName} required/>
           </div>
 
-          <div className="buttons__container">
+          <div className="form__colors">
             {colors.map((color, index) => (
               <button type="button" key={index} onClick={() => handleTextColor(color)} style={{backgroundColor: color}}>
                 {color}
@@ -118,13 +118,13 @@ function Container() {
             ))}
           </div>
 
-          <div className="fonts__container">
+          <div className="form__fonts">
             {fonts.map((font, index) => (
               <button type="button" key={index} onClick={() => handleFont(font)} style={{fontFamily: font}}>{font}</button>
             ))}
           </div>
 
-          <div className="submit__container">
+          <div className="form__submit">
             <button type="submit">Salvar</button>
           </div>
         </form>

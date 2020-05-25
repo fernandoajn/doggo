@@ -1,4 +1,4 @@
-.input__container {
+.form__input{
   display: flex;
   align-items: center;
   background-color: white;
@@ -7,7 +7,7 @@
   padding: .8em 1em;
   width: 100%;
 
-  & + .input__container {
+  & + .form__input {
     margin-top: 20px;
   }
 
@@ -29,7 +29,7 @@
   }
 }
 
-.buttons__container {
+.form__colors {
   margin-top: 20px;
   display: flex;
   width: 100%;
@@ -58,7 +58,7 @@
   }
 }
 
-.fonts__container {
+.form__fonts{
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -84,7 +84,7 @@
   }
 }
 
-.submit__container {
+.form__submit{
   display: flex;
   margin: 20px 0;
   justify-content: center;
@@ -95,5 +95,11 @@
     font-size: 1.1em;
     padding: 10px 45px;
     border-radius: 5px;
+    transition: 0.3s ease;
+
+    &:hover {
+      color: $secondaryColor;
+      background-color: white;
+    }
   }
 }
