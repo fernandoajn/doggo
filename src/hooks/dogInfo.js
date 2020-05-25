@@ -3,53 +3,12 @@ import React, { createContext, useState, useContext } from 'react';
 const DogContext = createContext({});
 
 const DogInfoProvider = ({ children }) => {
-  const [dogName, setDogName] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:dogName');
+  const [dogName, setDogName] = useState(() => localStorage.getItem('@doggo:dogName'));
+  const [dogBreed, setDogBreed] = useState(() => localStorage.getItem('@doggo:dogBreed') || '');
+  const [dogImage, setDogImage] = useState(() => localStorage.getItem('@doggo:dogImage'));
 
-    if(storaged) {
-      return storaged;
-    }
-
-    return 'Default';
-  });
-
-  const [dogBreed, setDogBreed] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:dogBreed');
-
-    if(storaged) {
-      return storaged;
-    }
-
-    return 'vira-lata';
-  });
-
-  const [dogImage, setDogImage] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:dogImage');
-
-    if(storaged) {
-      return storaged;
-    }
-  });
-
-  const [textColor, setTextColor] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:textColor');
-
-    if(storaged) {
-      return storaged;
-    }
-
-    return '#fff';
-  });
-
-  const [font, setFont] = useState(() => {
-    const storaged = localStorage.getItem('@doggo:font');
-
-    if(storaged) {
-      return storaged;
-    }
-
-    return 'Roboto Slab';
-  });
+  const [textColor, setTextColor] = useState(() => localStorage.getItem('@doggo:textColor') || '#edf2f4');
+  const [font, setFont] = useState(() => localStorage.getItem('@doggo:font'));
 
   return(
     <DogContext.Provider value={

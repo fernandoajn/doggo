@@ -5,6 +5,7 @@
   color: black;
   border-radius: 5px;
   padding: .8em 1em;
+  width: 100%;
 
   & + .input__container {
     margin-top: 20px;
@@ -29,6 +30,7 @@
 .buttons__container {
   margin-top: 20px;
   display: flex;
+  width: 100%;
 
   button {
     flex: 1;
@@ -67,9 +69,15 @@
     background-color: transparent;
     transition: 0.3s ease;
     text-align: center;
+    border-bottom: 2px solid transparent;
 
     &:hover {
-      letter-spacing: 2px;
+      border-bottom: 2px solid $secondaryColor;
+    }
+
+    @media #{$sm} {
+      font-size: 1.2em;
+      padding: 10px;
     }
   }
 }

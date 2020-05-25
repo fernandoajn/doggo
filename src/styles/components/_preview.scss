@@ -1,12 +1,29 @@
-
 .dog_info {
   background-color: rgba($color: $secondaryColor, $alpha: 0.8);
   display: flex;
   flex-direction: column;
   padding: 10px;
   text-align: center;
+  text-shadow: 0px 0px 3px #222;
 
-  width: 500px;
+  width: 100%;
   position: absolute;
   bottom: 0;
+}
+
+.container__info--image {
+  position: relative;
+  width: 80%;
+  height: 380px;
+  overflow: hidden;
+  background-color: rgba($color: $secondaryColor, $alpha: 0.8);
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+  }
 }

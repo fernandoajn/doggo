@@ -14,11 +14,11 @@ function Container() {
   const { dogName, dogBreed, dogImage, setDogName, textColor, font, setDogBreed, setTextColor, setFont } = useDogInfo();
 
   const colors = [
-    '#ff595e',
-    '#ffca3a',
-    '#edf2f4',
-    '#1982c4',
-    '#6a4c93'
+    '#A5CDD4',
+    '#FFCA3A',
+    '#EDF2F4',
+    '#FA9191',
+    '#D291BC'
   ];
 
   const fonts = [
@@ -97,6 +97,7 @@ function Container() {
         <form onSubmit={saveData}>
           <div className="input__container">
             <select name="breeds" id="breeds" onChange={handleBreed} defaultValue={dogBreed}>
+              <option value="" >Escolha uma raça</option>
               {breeds.map((breed) => (
                 <option value={breed} key={breed}>{breed}</option>
                 ))}
