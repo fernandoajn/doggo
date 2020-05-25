@@ -102,7 +102,7 @@ function Container() {
                 <option value={breed} key={breed}>{breed}</option>
                 ))}
             </select>
-            <MdKeyboardArrowDown size={26} color={'#4EAB6F'} />
+            <MdKeyboardArrowDown size={30} />
           </div>
 
           <div className="input__container">
@@ -125,7 +125,7 @@ function Container() {
           </div>
 
           <div className="submit__container">
-            <button>Salvar</button>
+            <button type="submit">Salvar</button>
           </div>
         </form>
       </div>

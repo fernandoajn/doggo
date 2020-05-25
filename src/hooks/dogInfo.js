@@ -11,7 +11,16 @@ const DogInfoProvider = ({ children }) => {
 
   return(
     <DogContext.Provider value={
-      { dogName, dogBreed, dogImage, textColor, font, setDogName, setDogBreed, setDogImage, setTextColor, setFont }
+      { dogName,
+        dogBreed,
+        dogImage,
+        textColor,
+        font,
+        setDogName,
+        setDogBreed,
+        setDogImage,
+        setTextColor,
+        setFont }
     }>
       {children}
     </DogContext.Provider>

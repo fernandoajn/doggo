@@ -2,7 +2,7 @@
 $primaryColor: #81b29a;
 $secondaryColor: darken($primaryColor, 20%);
 $primaryTextColor: #ffffff;
-$inputTextColor: #061826;
+$inputTextColor: darken($secondaryColor, 10%);
 
 // Fonts
 $primaryFont: 'Roboto Slab';
