@@ -14,19 +14,19 @@ function Container() {
   const { dogName, dogBreed, dogImage, setDogName, textColor, font, setDogBreed, setTextColor, setFont } = useDogInfo();
 
   const colors = [
-    '#A5CDD4',
-    '#FFCA3A',
+    '#2FC4B2',
+    '#FF926B',
     '#EDF2F4',
-    '#FA9191',
-    '#D291BC'
+    '#FFCA3A',
+    '#A5CDD4',
   ];
 
   const fonts = [
     'Roboto Slab',
-    'Archivo Narrow',
+    'Raleway',
     'Cinzel',
-    'Inconsolata',
-    'Lobster Two'
+    'Quicksand',
+    'Fredericka the Great'
   ]
 
   useEffect(() => {
@@ -113,7 +113,7 @@ function Container() {
           <div className="form__colors">
             {colors.map((color, index) => (
               <button type="button" key={index} onClick={() => handleTextColor(color)} style={{backgroundColor: color}}>
-                {color}
+                <span>{color}</span>
               </button>
             ))}
           </div>

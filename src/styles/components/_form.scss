@@ -38,12 +38,23 @@
     flex: 1;
     height: 40px;
     transition: 0.3s ease;
-    color: rgba($color: $inputTextColor, $alpha: 0.1);
+    color: transparent;
     font-size: .9em;
+
+    span {
+      background: transparent;
+      border-radius: 3px;
+      padding: 0 10px;
+      transition: 0.3s;
+    }
 
     &:hover {
       flex-basis: 40px;
-      color: rgba($color: $inputTextColor, $alpha: 1);
+      color: rgba($color: $primaryTextColor, $alpha: 1);
+
+      span {
+        background: rgba($color: #444, $alpha: 0.2);
+      }
     }
 
     &:nth-child(1) {
@@ -71,10 +82,10 @@
     background-color: transparent;
     transition: 0.3s ease;
     text-align: center;
-    border-bottom: 2px solid transparent;
 
     &:hover {
-      border-bottom: 2px solid $inputTextColor;
+      transform: translateY(-0.1em);
+      text-shadow: 1px 3px 1px $secondaryColor;
     }
 
     @media #{$sm} {
