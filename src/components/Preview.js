@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { MdCached } from 'react-icons/md';
 import Loader from 'react-loader-spinner';
 
 import { useDogInfo } from '../hooks/dogInfo';
@@ -11,37 +12,42 @@ function Preview() {
   const { dogName, dogBreed, dogImage, textColor, font, setDogImage } = useDogInfo();
   const didUpdateRef = useRef(false);
 
+  const loadDogImage = useCallback(async () => {
+    setLoadingImage(true);
+    const splittedBreed = dogBreed.split(' ');
+
+    const singleURN = `/breed/${dogBreed}/images/random`;
+    const doubleURN = `/breed/${splittedBreed[1]}/${splittedBreed[0]}/images/random`;
+
+    const { data } = await api.get(dogBreed.split(' ').length > 1 ? doubleURN : singleURN);
+
+    const { message } = data;
+
+    setDogImage(message);
+    setLoadingImage(false);
+  }, [dogBreed, setDogImage]);
+
   useEffect(() => {
-    async function loadDogImage() {
-      setLoadingImage(true);
-      // Verificar se a raça é um nome composto
-      const splittedBreed = dogBreed.split(' ');
-
-      const singleURN = `/breed/${dogBreed}/images/random`;
-      const doubleURN = `/breed/${splittedBreed[1]}/${splittedBreed[0]}/images/random`;
-
-      const { data } = await api.get(dogBreed.split(' ').length > 1 ? doubleURN : singleURN);
-
-      const { message } = data;
-
-      setDogImage(message);
-      setLoadingImage(false);
-    }
-
     if (didUpdateRef.current) {
       loadDogImage();
     } else {
       didUpdateRef.current = true;
     }
-  }, [dogBreed, setDogImage]);
+  }, [dogBreed, setDogImage, loadDogImage]);
 
   return (
     <div className="container__info--image" >
       {loadingImage ?
-      <Loader type="ThreeDots" color={textColor} height={50} width={50}/> :
+      <Loader type="ThreeDots" color="#fff" height={50} width={50}/> :
       <>
         {dogImage ?
-          <img src={dogImage} alt="DogImage" className="dog-image"/> :
+          <>
+          <button type="button" onClick={loadDogImage}>
+            <span>Trocar imagem</span>
+            <MdCached size={24} />
+          </button>
+          <img src={dogImage} alt="DogImage" className="dog-image"/>
+          </> :
           <img src={defaultImage} alt="doggo." className="default-image"/>
         }
       </>

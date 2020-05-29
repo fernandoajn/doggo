@@ -7,7 +7,7 @@ const DogInfoProvider = ({ children }) => {
   const [dogBreed, setDogBreed] = useState(() => localStorage.getItem('@doggo:dogBreed') || '');
   const [dogImage, setDogImage] = useState(() => localStorage.getItem('@doggo:dogImage'));
   const [textColor, setTextColor] = useState(() => localStorage.getItem('@doggo:textColor') || '#edf2f4');
-  const [font, setFont] = useState(() => localStorage.getItem('@doggo:font'));
+  const [font, setFont] = useState(() => localStorage.getItem('@doggo:font' || 'Roboto Slab'));
 
   return(
     <DogContext.Provider value={
